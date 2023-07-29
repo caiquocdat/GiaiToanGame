@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/splash_main"/>
+    <ImageView
+        android:id="@+id/img_1"
+        android:layout_width="596px"
+        android:layout_height="262px"
+        android:src="@drawable/logo_splash_1"
+        android:layout_marginTop="200px"
+        android:layout_centerHorizontal="true"/>
+    <ImageView
+        android:id="@+id/img_2"
+        android:layout_below="@id/img_1"
+        android:layout_width="693px"
+        android:layout_height="159px"
+        android:src="@drawable/logo_splash_2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:textAlignment="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:id="@+id/plus"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_2"
+        android:text="PHÉP CỘNG"
+        android:fontFamily="@font/alf"
+        android:textSize="30sp"
+        android:background="@drawable/brg_math"
+       android:layout_centerHorizontal="true"/>
+    <TextView
+        android:textAlignment="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:id="@+id/subtraction"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/plus"
+        android:text="PHÉP TRỪ"
+        android:fontFamily="@font/alf"
+        android:textSize="30sp"
+        android:background="@drawable/brg_math"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:textAlignment="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:id="@+id/multiplication"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subtraction"
+        android:text="PHÉP NHÂN"
+        android:fontFamily="@font/alf"
+        android:textSize="30sp"
+        android:background="@drawable/brg_math"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:textAlignment="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:id="@+id/division"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/multiplication"
+        android:text="PHÉP CHIA"
+        android:fontFamily="@font/alf"
+        android:textSize="30sp"
+        android:background="@drawable/brg_math"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:textAlignment="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:id="@+id/practice"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/division"
+        android:text="LUYỆN TÂP"
+        android:fontFamily="@font/alf"
+        android:textSize="30sp"
+        android:background="@drawable/brg_math"
+        android:layout_centerHorizontal="true"/>
+
+
+
+</RelativeLayout>
