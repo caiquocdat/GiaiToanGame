@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
+import com.example.giaitoan.data.plus.DataPlusSetup;
+import com.example.giaitoan.data.subtraction.DataSubtractionSetup;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -14,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         hideSystemUI();
+        setUpdataPlus();
+        setUpdataSubtraction();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -33,9 +38,21 @@ public class MainActivity extends AppCompatActivity {
 //                        | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
+    private void setUpdataPlus() {
+        DataPlusSetup dataPlusSetupHelper = new DataPlusSetup(this);
+        dataPlusSetupHelper.setUpDataPlus();
+    }
+    private void setUpdataSubtraction() {
+        DataSubtractionSetup dataSubtractionSetup = new DataSubtractionSetup(this);
+        dataSubtractionSetup.setUpDataPlus();
+    }
     @Override
     protected void onResume() {
         super.onResume();
         hideSystemUI();
+    }
+    @Override
+    public void onBackPressed() {
+        // Không làm gì cả để ngăn người dùng nhấn nút back
     }
 }

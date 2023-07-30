@@ -96,7 +96,7 @@
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/division"
-        android:text="LUYỆN TÂP"
+        android:text="LUYỆN TẬP"
         android:fontFamily="@font/alf"
         android:textSize="30sp"
         android:background="@drawable/brg_math"

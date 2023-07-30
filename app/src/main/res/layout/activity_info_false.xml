@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InfoFalseActivity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/main_brg"
+        android:scaleType="fitXY"/>
+    <ImageView
+        android:layout_centerHorizontal="true"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:src="@drawable/img_false"
+        android:layout_above="@+id/playAgain"/>
+    <TextView
+        android:textAlignment="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:id="@+id/playAgain"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="CHƠI LẠI"
+        android:fontFamily="@font/alf"
+        android:textSize="30sp"
+        android:background="@drawable/brg_math"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:textAlignment="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:id="@+id/homeTv"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/playAgain"
+        android:text="HOME"
+        android:fontFamily="@font/alf"
+        android:textSize="30sp"
+        android:background="@drawable/brg_math"
+        android:layout_centerHorizontal="true"/>
+
+
+</RelativeLayout>

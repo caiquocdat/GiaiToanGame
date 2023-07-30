@@ -46,4 +46,8 @@ public class Splash_2_Activity extends AppCompatActivity {
         super.onResume();
         hideSystemUI();
     }
+    @Override
+    public void onBackPressed() {
+        // Không làm gì cả để ngăn người dùng nhấn nút back
+    }
 }

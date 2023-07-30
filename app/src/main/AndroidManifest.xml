@@ -14,7 +14,13 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".PlusActivity"
+            android:name=".InfoFalseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InfoTrueActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CalculationActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"

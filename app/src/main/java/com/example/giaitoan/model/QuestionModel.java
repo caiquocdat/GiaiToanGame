@@ -3,10 +3,12 @@ package com.example.giaitoan.model;
 public class QuestionModel {
     private int id;
     private String text;
+    private String result;
 
-    public QuestionModel(int id, String text) {
+    public QuestionModel(int id, String text, String result) {
         this.id = id;
         this.text = text;
+        this.result = result;
     }
 
     public QuestionModel() {
@@ -28,4 +30,12 @@ public class QuestionModel {
     public void setText(String text) {
         this.text = text;
     }
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
 }
