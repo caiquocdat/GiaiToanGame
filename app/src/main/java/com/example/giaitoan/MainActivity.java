@@ -10,6 +10,7 @@ import android.view.View;
 import com.example.giaitoan.data.division.DataDivisionPlusSetup;
 import com.example.giaitoan.data.multiplication.DataMultiplicationPlusSetup;
 import com.example.giaitoan.data.plus.DataPlusSetup;
+import com.example.giaitoan.data.practice.DataPracticeSetup;
 import com.example.giaitoan.data.subtraction.DataSubtractionSetup;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setUpdataSubtraction();
         setUpdataMultiplication();
         setUpdataDivision();
+        setUpdataPractice();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -32,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 2000);  // thời gian delay là 3000 milliseconds (3 giây)
     }
+
+    private void setUpdataPractice() {
+        DataPracticeSetup dataPracticeSetup = new DataPracticeSetup(this);
+        dataPracticeSetup.setUpDataPra();
+    }
+
     private void hideSystemUI() {
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(

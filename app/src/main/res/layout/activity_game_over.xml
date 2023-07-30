@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameOverActivity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/main_brg"
+        android:scaleType="fitXY"/>
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:src="@drawable/img_game_over"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
+    <TextView
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:background="@drawable/brg_item_answer"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/luc"
+        android:id="@+id/resultTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ĐIỂM: 12"
+        android:textStyle="bold"
+        android:textSize="35sp"
+        android:textAlignment="center"
+        android:textColor="@color/white"/>
+    <ImageView
+        android:id="@+id/againImg"
+        android:layout_below="@id/resultTv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/img_again"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"/>
+
+</RelativeLayout>

@@ -23,9 +23,14 @@ public class InfoFalseActivity extends AppCompatActivity {
         playAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent intent_1 = new Intent(InfoFalseActivity.this, CalculationActivity.class);
-                    intent_1.putExtra("activity",activity);
+                if(activity.equals("pra")){
+                    Intent intent_1 = new Intent(InfoFalseActivity.this, PracticeActivity.class);
                     startActivity(intent_1);
+                }else {
+                    Intent intent_1 = new Intent(InfoFalseActivity.this, CalculationActivity.class);
+                    intent_1.putExtra("activity", activity);
+                    startActivity(intent_1);
+                }
             }
         });
         homeTv.setOnClickListener(new View.OnClickListener() {

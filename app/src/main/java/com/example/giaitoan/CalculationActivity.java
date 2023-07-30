@@ -95,11 +95,17 @@ public class CalculationActivity extends AppCompatActivity {
                     Log.d("Test_6", "onSelect: " + pointCount);
 //                    pointInt=pointInt+1;
 //                    pointTv.setText(pointInt+"");
-                    Intent intent = new Intent(CalculationActivity.this, InfoTrueActivity.class);
-                    intent.putExtra("check", "true");
-                    intent.putExtra("point", pointIntSent);
-                    intent.putExtra("activity", "mul");
-                    startActivity(intent);
+                    if (pointIntSent == 9) {
+                        Intent intent = new Intent(CalculationActivity.this, GameOverActivity.class);
+                        intent.putExtra("point", pointIntSent+1);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(CalculationActivity.this, InfoTrueActivity.class);
+                        intent.putExtra("check", "true");
+                        intent.putExtra("point", pointIntSent);
+                        intent.putExtra("activity", "mul");
+                        startActivity(intent);
+                    }
                 } else {
 //                    String point = pointTv.getText().toString();
 //                    int pointInt = Integer.parseInt(point);
@@ -144,11 +150,17 @@ public class CalculationActivity extends AppCompatActivity {
                     Log.d("Test_6", "onSelect: " + pointCount);
 //                    pointInt=pointInt+1;
 //                    pointTv.setText(pointInt+"");
-                    Intent intent = new Intent(CalculationActivity.this, InfoTrueActivity.class);
-                    intent.putExtra("check", "true");
-                    intent.putExtra("point", pointIntSent);
-                    intent.putExtra("activity", "div");
-                    startActivity(intent);
+                    if (pointIntSent == 9) {
+                        Intent intent = new Intent(CalculationActivity.this, GameOverActivity.class);
+                        intent.putExtra("point", pointIntSent+1);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(CalculationActivity.this, InfoTrueActivity.class);
+                        intent.putExtra("check", "true");
+                        intent.putExtra("point", pointIntSent);
+                        intent.putExtra("activity", "div");
+                        startActivity(intent);
+                    }
                 } else {
 //                    String point = pointTv.getText().toString();
 //                    int pointInt = Integer.parseInt(point);
@@ -193,11 +205,17 @@ public class CalculationActivity extends AppCompatActivity {
                     Log.d("Test_6", "onSelect: " + pointCount);
 //                    pointInt=pointInt+1;
 //                    pointTv.setText(pointInt+"");
-                    Intent intent = new Intent(CalculationActivity.this, InfoTrueActivity.class);
-                    intent.putExtra("check", "true");
-                    intent.putExtra("point", pointIntSent);
-                    intent.putExtra("activity", "sub");
-                    startActivity(intent);
+                    if (pointIntSent == 9) {
+                        Intent intent = new Intent(CalculationActivity.this, GameOverActivity.class);
+                        intent.putExtra("point", pointIntSent+1);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(CalculationActivity.this, InfoTrueActivity.class);
+                        intent.putExtra("check", "true");
+                        intent.putExtra("point", pointIntSent);
+                        intent.putExtra("activity", "sub");
+                        startActivity(intent);
+                    }
                 } else {
 //                    String point = pointTv.getText().toString();
 //                    int pointInt = Integer.parseInt(point);
@@ -258,11 +276,17 @@ public class CalculationActivity extends AppCompatActivity {
                     Log.d("Test_6", "onSelect: " + pointCount);
 //                    pointInt=pointInt+1;
 //                    pointTv.setText(pointInt+"");
-                    Intent intent = new Intent(CalculationActivity.this, InfoTrueActivity.class);
-                    intent.putExtra("check", "true");
-                    intent.putExtra("point", pointIntSent);
-                    intent.putExtra("activity", "plus");
-                    startActivity(intent);
+                    if (pointIntSent == 9) {
+                        Intent intent = new Intent(CalculationActivity.this, GameOverActivity.class);
+                        intent.putExtra("point", pointIntSent+1);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(CalculationActivity.this, InfoTrueActivity.class);
+                        intent.putExtra("check", "true");
+                        intent.putExtra("point", pointIntSent);
+                        intent.putExtra("activity", "plus");
+                        startActivity(intent);
+                    }
                 } else {
 //                    String point = pointTv.getText().toString();
 //                    int pointInt = Integer.parseInt(point);

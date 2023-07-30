@@ -1,12 +1,10 @@
 package com.example.giaitoan.adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,22 +12,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.giaitoan.R;
 import com.example.giaitoan.model.AnswerModel;
 import com.example.giaitoan.model.OnSelectAnswer;
+import com.example.giaitoan.model.QuestionPra;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerViewHolder> {
+public class AnswerPraAdapter extends RecyclerView.Adapter<AnswerPraAdapter.AnswerViewHolder> {
 
-    private List<AnswerModel> answerList;
+    private List<String> answerList;
     private Context context;
     private String result;
     private OnSelectAnswer listener;
 
-    public AnswerAdapter(List<AnswerModel> answerList, Context context, String result) {
+    public AnswerPraAdapter(List<String> answerList, Context context, String result) {
         this.answerList = answerList;
         this.context = context;
         this.result = result;
     }
-    public void updateData(List<AnswerModel> answerList,Context context, String newResult) {
+    public void updateData(List<String> answerList,Context context, String newResult) {
         this.answerList = answerList;
         this.context=context;
         this.result = newResult;
@@ -42,14 +42,14 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerView
     @NonNull
     @Override
     public AnswerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(context).inflate(R.layout.item_answer, parent, false);
+        View itemView = LayoutInflater.from(context).inflate(R.layout.item_answer_pra, parent, false);
         return new AnswerViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AnswerViewHolder holder, int position) {
-        AnswerModel answer = answerList.get(position);
-        holder.answerTextView.setText(answer.getText());
+        String answer = answerList.get(position);
+        holder.answerTextView.setText(answer);
         holder.answerTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

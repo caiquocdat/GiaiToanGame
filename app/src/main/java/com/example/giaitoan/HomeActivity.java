@@ -56,8 +56,7 @@ public class HomeActivity extends AppCompatActivity {
         practice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, CalculationActivity.class);
-                intent.putExtra("activity","pra");
+                Intent intent = new Intent(HomeActivity.this, PracticeActivity.class);
                 startActivity(intent);
             }
         });
