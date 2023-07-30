@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
+import com.example.giaitoan.data.division.DataDivisionPlusSetup;
+import com.example.giaitoan.data.multiplication.DataMultiplicationPlusSetup;
 import com.example.giaitoan.data.plus.DataPlusSetup;
 import com.example.giaitoan.data.subtraction.DataSubtractionSetup;
 
@@ -19,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
         hideSystemUI();
         setUpdataPlus();
         setUpdataSubtraction();
+        setUpdataMultiplication();
+        setUpdataDivision();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -45,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
     private void setUpdataSubtraction() {
         DataSubtractionSetup dataSubtractionSetup = new DataSubtractionSetup(this);
         dataSubtractionSetup.setUpDataPlus();
+    }
+    private void setUpdataMultiplication() {
+        DataMultiplicationPlusSetup dataMultiplicationPlusSetup = new DataMultiplicationPlusSetup(this);
+        dataMultiplicationPlusSetup.setUpDataPlus();
+    }
+    private void setUpdataDivision() {
+        DataDivisionPlusSetup dataDivisionPlusSetup = new DataDivisionPlusSetup(this);
+        dataDivisionPlusSetup.setUpDataPlus();
     }
     @Override
     protected void onResume() {

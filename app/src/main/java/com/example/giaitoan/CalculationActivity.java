@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.giaitoan.adapter.AnswerAdapter;
+import com.example.giaitoan.data.division.DivisionDatabaseHelper;
+import com.example.giaitoan.data.multiplication.MultiplicationDatabaseHelper;
 import com.example.giaitoan.data.plus.PlusDatabaseHelper;
 import com.example.giaitoan.data.subtraction.SubtractionDatabaseHelper;
 import com.example.giaitoan.model.AnswerModel;
@@ -73,17 +75,105 @@ public class CalculationActivity extends AppCompatActivity {
     }
 
     private void getDataMul() {
+        MultiplicationDatabaseHelper multiplicationDatabaseHelper = new MultiplicationDatabaseHelper(CalculationActivity.this);
+        questionWithAnswersModel = multiplicationDatabaseHelper.getRandomQuestionAndAnswers();
+        updateQuestionMul();
+    }
 
+    private void updateQuestionMul() {
+        questionTv.setText(questionWithAnswersModel.getQuestion().getText());
+        answerModelList = new ArrayList<>();
+        answerModelList = questionWithAnswersModel.getAnswers();
+        answerAdapter = new AnswerAdapter(answerModelList, this, questionWithAnswersModel.getQuestion().getResult());
+
+        answerAdapter.setListener(new OnSelectAnswer() {
+            @Override
+            public void onSelect(String check) {
+                if (check.equals("true")) {
+                    String point = pointTv.getText().toString();
+                    int pointIntSent = Integer.parseInt(point);
+                    Log.d("Test_6", "onSelect: " + pointCount);
+//                    pointInt=pointInt+1;
+//                    pointTv.setText(pointInt+"");
+                    Intent intent = new Intent(CalculationActivity.this, InfoTrueActivity.class);
+                    intent.putExtra("check", "true");
+                    intent.putExtra("point", pointIntSent);
+                    intent.putExtra("activity", "mul");
+                    startActivity(intent);
+                } else {
+//                    String point = pointTv.getText().toString();
+//                    int pointInt = Integer.parseInt(point);
+//                    pointInt--;
+//                    if (pointInt < 0) {
+//                        finish();
+//                    } else {
+//                        pointTv.setText(pointInt+"");
+//                    }
+                    Intent intent = new Intent(CalculationActivity.this, InfoFalseActivity.class);
+                    intent.putExtra("check", "false");
+                    intent.putExtra("activity", "mul");
+                    startActivity(intent);
+                }
+            }
+        });
+
+        gridLayoutManager = new GridLayoutManager(this, 3);
+        answerRcv.setLayoutManager(gridLayoutManager);
+        answerRcv.setAdapter(answerAdapter);
     }
 
     private void getDataDiv() {
+        DivisionDatabaseHelper divisionDatabaseHelper = new DivisionDatabaseHelper(CalculationActivity.this);
+        questionWithAnswersModel = divisionDatabaseHelper.getRandomQuestionAndAnswers();
+        updateQuestionDiv();
 
+    }
+
+    private void updateQuestionDiv() {
+        questionTv.setText(questionWithAnswersModel.getQuestion().getText());
+        answerModelList = new ArrayList<>();
+        answerModelList = questionWithAnswersModel.getAnswers();
+        answerAdapter = new AnswerAdapter(answerModelList, this, questionWithAnswersModel.getQuestion().getResult());
+
+        answerAdapter.setListener(new OnSelectAnswer() {
+            @Override
+            public void onSelect(String check) {
+                if (check.equals("true")) {
+                    String point = pointTv.getText().toString();
+                    int pointIntSent = Integer.parseInt(point);
+                    Log.d("Test_6", "onSelect: " + pointCount);
+//                    pointInt=pointInt+1;
+//                    pointTv.setText(pointInt+"");
+                    Intent intent = new Intent(CalculationActivity.this, InfoTrueActivity.class);
+                    intent.putExtra("check", "true");
+                    intent.putExtra("point", pointIntSent);
+                    intent.putExtra("activity", "div");
+                    startActivity(intent);
+                } else {
+//                    String point = pointTv.getText().toString();
+//                    int pointInt = Integer.parseInt(point);
+//                    pointInt--;
+//                    if (pointInt < 0) {
+//                        finish();
+//                    } else {
+//                        pointTv.setText(pointInt+"");
+//                    }
+                    Intent intent = new Intent(CalculationActivity.this, InfoFalseActivity.class);
+                    intent.putExtra("check", "false");
+                    intent.putExtra("activity", "div");
+                    startActivity(intent);
+                }
+            }
+        });
+
+        gridLayoutManager = new GridLayoutManager(this, 3);
+        answerRcv.setLayoutManager(gridLayoutManager);
+        answerRcv.setAdapter(answerAdapter);
     }
 
     private void getDataSub() {
         SubtractionDatabaseHelper subtractionDatabaseHelper = new SubtractionDatabaseHelper(CalculationActivity.this);
         questionWithAnswersModel = subtractionDatabaseHelper.getRandomQuestionAndAnswers();
-        seenQuestionIds.add(questionWithAnswersModel.getQuestion().getId()); // remember this question
         updateQuestionSub();
 
     }
@@ -150,14 +240,6 @@ public class CalculationActivity extends AppCompatActivity {
     private void getDataPlus() {
         PlusDatabaseHelper plusDatabaseHelper = new PlusDatabaseHelper(CalculationActivity.this);
         questionWithAnswersModel = plusDatabaseHelper.getRandomQuestionAndAnswers();
-        seenQuestionIds.add(questionWithAnswersModel.getQuestion().getId()); // remember this question
-        updateQuestion();
-    }
-
-    private void getDataPlusClick() {
-        PlusDatabaseHelper plusDatabaseHelper = new PlusDatabaseHelper(CalculationActivity.this);
-        questionWithAnswersModel = plusDatabaseHelper.getRandomQuestionAndAnswersExcept(seenQuestionIds);
-        seenQuestionIds.add(questionWithAnswersModel.getQuestion().getId()); // remember this question
         updateQuestion();
     }
 
