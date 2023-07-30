@@ -93,8 +93,6 @@ public class CalculationActivity extends AppCompatActivity {
                     String point = pointTv.getText().toString();
                     int pointIntSent = Integer.parseInt(point);
                     Log.d("Test_6", "onSelect: " + pointCount);
-//                    pointInt=pointInt+1;
-//                    pointTv.setText(pointInt+"");
                     if (pointIntSent == 9) {
                         Intent intent = new Intent(CalculationActivity.this, GameOverActivity.class);
                         intent.putExtra("point", pointIntSent+1);
@@ -107,14 +105,6 @@ public class CalculationActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 } else {
-//                    String point = pointTv.getText().toString();
-//                    int pointInt = Integer.parseInt(point);
-//                    pointInt--;
-//                    if (pointInt < 0) {
-//                        finish();
-//                    } else {
-//                        pointTv.setText(pointInt+"");
-//                    }
                     Intent intent = new Intent(CalculationActivity.this, InfoFalseActivity.class);
                     intent.putExtra("check", "false");
                     intent.putExtra("activity", "mul");
@@ -162,14 +152,6 @@ public class CalculationActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 } else {
-//                    String point = pointTv.getText().toString();
-//                    int pointInt = Integer.parseInt(point);
-//                    pointInt--;
-//                    if (pointInt < 0) {
-//                        finish();
-//                    } else {
-//                        pointTv.setText(pointInt+"");
-//                    }
                     Intent intent = new Intent(CalculationActivity.this, InfoFalseActivity.class);
                     intent.putExtra("check", "false");
                     intent.putExtra("activity", "div");
@@ -217,14 +199,6 @@ public class CalculationActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 } else {
-//                    String point = pointTv.getText().toString();
-//                    int pointInt = Integer.parseInt(point);
-//                    pointInt--;
-//                    if (pointInt < 0) {
-//                        finish();
-//                    } else {
-//                        pointTv.setText(pointInt+"");
-//                    }
                     Intent intent = new Intent(CalculationActivity.this, InfoFalseActivity.class);
                     intent.putExtra("check", "false");
                     intent.putExtra("activity", "sub");
@@ -274,8 +248,6 @@ public class CalculationActivity extends AppCompatActivity {
                     String point = pointTv.getText().toString();
                     int pointIntSent = Integer.parseInt(point);
                     Log.d("Test_6", "onSelect: " + pointCount);
-//                    pointInt=pointInt+1;
-//                    pointTv.setText(pointInt+"");
                     if (pointIntSent == 9) {
                         Intent intent = new Intent(CalculationActivity.this, GameOverActivity.class);
                         intent.putExtra("point", pointIntSent+1);
@@ -288,14 +260,6 @@ public class CalculationActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 } else {
-//                    String point = pointTv.getText().toString();
-//                    int pointInt = Integer.parseInt(point);
-//                    pointInt--;
-//                    if (pointInt < 0) {
-//                        finish();
-//                    } else {
-//                        pointTv.setText(pointInt+"");
-//                    }
                     Intent intent = new Intent(CalculationActivity.this, InfoFalseActivity.class);
                     intent.putExtra("check", "false");
                     intent.putExtra("activity", "plus");

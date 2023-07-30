@@ -67,7 +67,7 @@ public class DataMultiplicationPlusSetup {
         QuestionWithAnswersModel questionWithAnswersModel_3= new QuestionWithAnswersModel(questionModel_3,answerModelList_3);
         // câu hỏi 4
         QuestionModel questionModel_4= new QuestionModel(4,"4 x 4","16");
-        AnswerModel answerModel4_1= new AnswerModel(19,4,"6");
+        AnswerModel answerModel4_1= new AnswerModel(19,4,"16");
         AnswerModel answerModel4_2= new AnswerModel(20,4,"1");
         AnswerModel answerModel4_3= new AnswerModel(21,4,"4");
         AnswerModel answerModel4_4= new AnswerModel(22,4,"2");
