@@ -2,13 +2,20 @@ package com.example.giaitoan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.giaitoan.data.plus.DataPlusSetup;
 import com.example.giaitoan.data.subtraction.DataSubtractionSetup;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashSet;
 
 public class HomeActivity extends AppCompatActivity {
     TextView plus,subtraction,multiplication,division,practice;
@@ -19,6 +26,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         mapping();
         hideSystemUI();
+        remoteDataId();
 
 
         plus.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +71,12 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-
+    private void remoteDataId() {
+        SharedPreferences preferences = getSharedPreferences("Check", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.remove("seenQuestionIds");
+        editor.apply();
+    }
 
 
     private void mapping() {

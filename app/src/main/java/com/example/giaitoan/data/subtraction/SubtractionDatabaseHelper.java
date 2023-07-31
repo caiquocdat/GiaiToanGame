@@ -65,6 +65,7 @@ public class SubtractionDatabaseHelper extends SQLiteOpenHelper {
             QuestionModel question = new QuestionModel();
             question.setId(questionCursor.getInt(questionCursor.getColumnIndexOrThrow(COLUMN_QUESTION_ID)));
             question.setText(questionCursor.getString(questionCursor.getColumnIndexOrThrow(COLUMN_QUESTION_TEXT)));
+            question.setResult(questionCursor.getString(questionCursor.getColumnIndexOrThrow(COLUMN_QUESTION_RESULT))); // you missed this line
             questionWithAnswers.setQuestion(question);
 
             Cursor answerCursor = db.rawQuery("SELECT * FROM " + TABLE_ANSWERS + " WHERE " + COLUMN_QUESTION_ID_FOREIGN + " = ? ORDER BY RANDOM()", new String[]{String.valueOf(question.getId())});

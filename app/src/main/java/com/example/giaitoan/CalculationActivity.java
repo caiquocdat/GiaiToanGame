@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,7 +20,10 @@ import com.example.giaitoan.data.subtraction.SubtractionDatabaseHelper;
 import com.example.giaitoan.model.AnswerModel;
 import com.example.giaitoan.model.OnSelectAnswer;
 import com.example.giaitoan.model.QuestionWithAnswersModel;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -31,9 +36,12 @@ public class CalculationActivity extends AppCompatActivity {
     List<AnswerModel> answerModelList;
     GridLayoutManager gridLayoutManager;
     private HashSet<Integer> seenQuestionIds;
+    HashSet<Integer> retrievedSet;
     String point;
     int pointInt;
     int pointCount = 0;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
 
     @Override
@@ -41,6 +49,17 @@ public class CalculationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plus);
         seenQuestionIds = new HashSet<>();
+         preferences = getSharedPreferences("Check", Context.MODE_PRIVATE);
+         editor = preferences.edit();
+         Gson gsonResult=new Gson();
+        String jsonResult = preferences.getString("seenQuestionIds", "");
+        Type type = new TypeToken<HashSet<Integer>>(){}.getType();
+        retrievedSet = gsonResult.fromJson(jsonResult, type);
+        if (retrievedSet == null) {
+            retrievedSet = new HashSet<>();
+        }
+        Log.d("Test_20", "onCreate: "+retrievedSet.size());
+
         mapping();
         hideSystemUI();
         Intent intentCalcu = getIntent();
@@ -53,22 +72,74 @@ public class CalculationActivity extends AppCompatActivity {
         }
         String activity = intentCalcu.getStringExtra("activity");
         if (activity.equals("plus")) {
-            getDataPlus();
+           getDataPlusClick();
         }else if (activity.equals("sub")) {
             Log.d("Test_10", "onCreate: "+activity);
-            getDataSub();
+            getDataSubClick();
         }else if (activity.equals("div")) {
             Log.d("Test_10", "onCreate: "+activity);
-            getDataDiv();
+            getDataDivClick();
         }else if (activity.equals("mul")) {
             Log.d("Test_10", "onCreate: "+activity);
-            getDataMul();
+            getDataMulClick();
         }else {
             getDataPra();
             Log.d("Test_10", "onCreate: "+activity);
         }
 
 
+    }
+
+    private void getDataMulClick() {
+        MultiplicationDatabaseHelper multiplicationDatabaseHelper = new MultiplicationDatabaseHelper(CalculationActivity.this);
+        questionWithAnswersModel = multiplicationDatabaseHelper.getRandomQuestionAndAnswersExcept(retrievedSet);
+        Log.d("Test_17", "getDataPlusClick: "+questionWithAnswersModel.getQuestion().getText());
+        Log.d("Test_17", "getDataPlusClick: "+questionWithAnswersModel.getQuestion().getResult());
+        for (int i=0;i<questionWithAnswersModel.getAnswers().size();i++){
+            Log.d("Test_17", "getDataPlusClick: "+questionWithAnswersModel.getAnswers().get(i));
+        }
+        seenQuestionIds.add(questionWithAnswersModel.getQuestion().getId()); // remember this question
+        retrievedSet.add(questionWithAnswersModel.getQuestion().getId());
+        Gson gson = new Gson();
+        String json = gson.toJson(retrievedSet);
+        editor.putString("seenQuestionIds", json);
+        editor.apply();
+        updateQuestionMul();
+    }
+
+    private void getDataDivClick() {
+        DivisionDatabaseHelper divisionDatabaseHelper = new DivisionDatabaseHelper(CalculationActivity.this);
+        questionWithAnswersModel = divisionDatabaseHelper.getRandomQuestionAndAnswersExcept(retrievedSet);
+        Log.d("Test_17", "getDataPlusClick: "+questionWithAnswersModel.getQuestion().getText());
+        Log.d("Test_17", "getDataPlusClick: "+questionWithAnswersModel.getQuestion().getResult());
+        for (int i=0;i<questionWithAnswersModel.getAnswers().size();i++){
+            Log.d("Test_17", "getDataPlusClick: "+questionWithAnswersModel.getAnswers().get(i));
+        }
+        seenQuestionIds.add(questionWithAnswersModel.getQuestion().getId()); // remember this question
+        retrievedSet.add(questionWithAnswersModel.getQuestion().getId());
+        Gson gson = new Gson();
+        String json = gson.toJson(retrievedSet);
+        editor.putString("seenQuestionIds", json);
+        editor.apply();
+        updateQuestionDiv();
+
+    }
+
+    private void getDataSubClick() {
+        SubtractionDatabaseHelper subtractionDatabaseHelper = new SubtractionDatabaseHelper(CalculationActivity.this);
+        questionWithAnswersModel = subtractionDatabaseHelper.getRandomQuestionAndAnswersExcept(retrievedSet);
+        Log.d("Test_17", "getDataPlusClick: "+questionWithAnswersModel.getQuestion().getText());
+        Log.d("Test_17", "getDataPlusClick: "+questionWithAnswersModel.getQuestion().getResult());
+        for (int i=0;i<questionWithAnswersModel.getAnswers().size();i++){
+            Log.d("Test_17", "getDataPlusClick: "+questionWithAnswersModel.getAnswers().get(i));
+        }
+        seenQuestionIds.add(questionWithAnswersModel.getQuestion().getId()); // remember this question
+        retrievedSet.add(questionWithAnswersModel.getQuestion().getId());
+        Gson gson = new Gson();
+        String json = gson.toJson(retrievedSet);
+        editor.putString("seenQuestionIds", json);
+        editor.apply();
+        updateQuestionSub();
     }
 
     private void getDataPra() {
@@ -234,11 +305,31 @@ public class CalculationActivity extends AppCompatActivity {
         questionWithAnswersModel = plusDatabaseHelper.getRandomQuestionAndAnswers();
         updateQuestion();
     }
+    private void getDataPlusClick() {
+        PlusDatabaseHelper plusDatabaseHelper = new PlusDatabaseHelper(CalculationActivity.this);
+        questionWithAnswersModel = plusDatabaseHelper.getRandomQuestionAndAnswersExcept(retrievedSet);
+        Log.d("Test_17", "getDataPlusClick: "+questionWithAnswersModel.getQuestion().getText());
+        Log.d("Test_17", "getDataPlusClick: "+questionWithAnswersModel.getQuestion().getResult());
+        for (int i=0;i<questionWithAnswersModel.getAnswers().size();i++){
+            Log.d("Test_17", "getDataPlusClick: "+questionWithAnswersModel.getAnswers().get(i));
+        }
+        seenQuestionIds.add(questionWithAnswersModel.getQuestion().getId()); // remember this question
+        retrievedSet.add(questionWithAnswersModel.getQuestion().getId());
+        Gson gson = new Gson();
+        String json = gson.toJson(retrievedSet);
+        editor.putString("seenQuestionIds", json);
+        editor.apply();
+
+
+        updateQuestion();
+    }
+
 
     private void updateQuestion() {
         questionTv.setText(questionWithAnswersModel.getQuestion().getText());
         answerModelList = new ArrayList<>();
         answerModelList = questionWithAnswersModel.getAnswers();
+        Log.d("Test_16", "updateQuestion: "+questionWithAnswersModel.getQuestion().getResult());
         answerAdapter = new AnswerAdapter(answerModelList, this, questionWithAnswersModel.getQuestion().getResult());
 
         answerAdapter.setListener(new OnSelectAnswer() {

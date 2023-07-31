@@ -2,7 +2,9 @@ package com.example.giaitoan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -31,6 +33,7 @@ public class InfoFalseActivity extends AppCompatActivity {
                     intent_1.putExtra("activity", activity);
                     startActivity(intent_1);
                 }
+                remoteDataId();
             }
         });
         homeTv.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +53,12 @@ public class InfoFalseActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 //                        | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    }
+    private void remoteDataId() {
+        SharedPreferences preferences = getSharedPreferences("Check", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.remove("seenQuestionIds");
+        editor.apply();
     }
 
     private void mapping() {
