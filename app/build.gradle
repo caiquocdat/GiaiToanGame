@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.giaitoan'
+    namespace 'com.caiquocdat.giaitoan'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.giaitoan"
+        applicationId "com.caiquocdat.giaitoan"
         minSdk 24
         targetSdk 33
         versionCode 1
